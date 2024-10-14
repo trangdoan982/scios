@@ -1,15 +1,14 @@
 import Navigation from "./components/navigation";
 import Product from "./components/product";
-import Button from "./components/button";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import ProjectCard from "./components/project";
 import ProjectSection from "./components/projectSection";
 import Footer from "./components/footer";
 import EventSection from "./components/eventSection";
 import SupporterSection from "./components/supporterSection";
 import Banner from "./components/banner";
 import BlobBackground from "./components/background";
+import ConnectIcon from "@/assets/icons/connect.svg";
+import BuildIcon from "@/assets/icons/build.svg";
+import ShareIcon from "@/assets/icons/share.svg";
 
 export default function Home() {
 	return (
@@ -60,7 +59,7 @@ export default function Home() {
 
 					<Product
 						title={"Connect"}
-						icon={"connect.svg"}
+						icon={ConnectIcon}
 						text={
 							"Network of researchers and technologists who want to and can create technology for the Open Science community."
 						}
@@ -69,7 +68,7 @@ export default function Home() {
 					/>
 					<Product
 						title="Build"
-						icon="build.svg"
+						icon={BuildIcon}
 						text="Our workshops lead to clear outputs. Every workshop, working group, and hackathon is grounded in the results the community needs instead of declarations on what we already know we should do."
 						imageSrc="build.png"
 						hyperlink="#projects"
@@ -78,7 +77,7 @@ export default function Home() {
 					/>
 					<Product
 						title="Share"
-						icon="share.svg"
+						icon={ShareIcon}
 						text="All technology we facilitate is open source. Our workshop outputs are synthesized into resources accessible and understandable by everyone. We then shared directly to ensure that the most engaged and impacted individuals know."
 						imageSrc="share.png"
 						// TODO: add link to open pop up for subscribe to newsletter

@@ -1,11 +1,6 @@
-// "use client";
-import { useEffect, useState } from "react";
 import EventCard, { EventProps } from "./event";
 import getAllEvents from "../api/events/getAllEvents";
 
-interface EventSectionProps {
-	events: EventProps[];
-}
 const EventSection = async () => {
 	const events = await getAllEvents();
 	const upcomingEvents = events!.filter((event) => event.isOld === "FALSE");
@@ -36,18 +31,20 @@ const EventSection = async () => {
 			<h2 className="text-4xl font-openSans font-bold" id="past-events">
 				Past events
 			</h2>
-			{pastEvents.map((event) => {
+			{pastEvents.map((event, index) => {
 				return (
-					<EventCard
-						title={event.title}
-						date={event.date}
-						hosts={event.hosts}
-						location={event.location}
-						description={event.description}
-						oldResources={event.oldResources}
-						agenda={event.agenda}
-						isOld={event.isOld}
-					/>
+					<div key={index.toString()}>
+						<EventCard
+							title={event.title}
+							date={event.date}
+							hosts={event.hosts}
+							location={event.location}
+							description={event.description}
+							oldResources={event.oldResources}
+							agenda={event.agenda}
+							isOld={event.isOld}
+						/>
+					</div>
 				);
 			})}
 		</div>

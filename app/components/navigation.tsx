@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Hyperlink from "./hyperlink";
 import Button from "./button";
 
 const Navigation = () => {
@@ -8,7 +7,7 @@ const Navigation = () => {
 		<div className="flex flex-row justify-between items-center w-full py-2">
 			<div className="flex flex-row gap-8 md:gap-16 items-center font-semibold">
 				<a href="#about">
-					<Image src="/logo.svg" alt="logo" width={100} height={38} />
+					<img src="/logo.svg" alt="logo" width={100} height={38} />
 				</a>
 				<a href="#product">About</a>
 				<a href="#projects">Projects</a>

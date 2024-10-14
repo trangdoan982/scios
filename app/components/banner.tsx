@@ -1,5 +1,5 @@
-import { GetStaticProps } from "next";
 import { getLogos } from "../lib/getLogos";
+import Image from "next/image";
 
 const Banner = () => {
 	const logos = getLogos();

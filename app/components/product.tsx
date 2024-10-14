@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import Button from "./button";
 import Hyperlink from "./hyperlink";
+import { ReactNode } from "react";
 
 interface ProductProps {
 	title: string;
@@ -24,6 +24,7 @@ const Product: React.FC<ProductProps> = ({
 	imageSrc,
 	reverse = false,
 }) => {
+	const iconPath = require(`../assets/icons/${icon}`);
 	return (
 		<div
 			className={`flex flex-col md:flex-row ${
@@ -32,7 +33,7 @@ const Product: React.FC<ProductProps> = ({
 		>
 			<div className="w-full md:w-1/2 space-y-4">
 				<div className="flex items-center gap-2">
-					<Image src={`/icons/${icon}`} alt="" width={24} height={24} />
+					<img src={icon} alt={""} height={24} width={24} />
 					<h2 className="text-2xl font-bold ">{title}</h2>
 				</div>
 				<p className="">{text}</p>

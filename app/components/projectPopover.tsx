@@ -1,16 +1,12 @@
 "use client";
-import {
-	Description,
-	Dialog,
-	DialogPanel,
-	DialogTitle,
-} from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ProjectCardProps } from "./project";
-import CloseIcon from "./../../public/icons/close.svg";
+import CloseIcon from "@/assets/icons/close.svg";
 import Hyperlink from "./hyperlink";
 import { Contributor } from "./contributors";
 import Button from "./button";
+import Image from "next/image";
 
 interface ProjectPopoverProps extends ProjectCardProps {
 	isOpen: boolean;
@@ -66,13 +62,15 @@ const ProjectPopover: React.FC<ProjectPopoverProps> = ({
 							/>
 							<div className="flex flex-col-reverse gap-4 md:flex-row md:justify-between md:items-center">
 								<div className="flex flex-col gap-3">
-									{hyperlinks.map((hyperlink) => {
+									{hyperlinks.map((hyperlink, index) => {
 										return (
-											<Hyperlink
-												text={hyperlink.text}
-												url={hyperlink.href}
-												classname="text-dark-grey"
-											/>
+											<div key={index.toString()}>
+												<Hyperlink
+													text={hyperlink.text}
+													url={hyperlink.href}
+													classname="text-dark-grey"
+												/>
+											</div>
 										);
 									})}
 									<Button
@@ -84,13 +82,15 @@ const ProjectPopover: React.FC<ProjectPopoverProps> = ({
 								<div className="flex flex-col gap-2">
 									<p className="text-sm text-dark-grey">Contributors</p>
 									<div className="grid grid-cols-2 gap-4">
-										{contributors.map((person) => {
+										{contributors.map((person, index) => {
 											return (
-												<Contributor
-													name={person.name}
-													url={person.url}
-													image={person.image}
-												/>
+												<div key={index.toString()}>
+													<Contributor
+														name={person.name}
+														url={person.url}
+														image={person.image}
+													/>
+												</div>
 											);
 										})}
 									</div>

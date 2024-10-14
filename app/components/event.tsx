@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import MinusIcon from "./../../public/icons/minus.svg";
-import PlusIcon from "./../../public/icons/plus.svg";
+import MinusIcon from "@/assets/icons/minus.svg";
+import PlusIcon from "@/assets/icons/plus.svg";
 import Button from "./button";
 import Hyperlink from "./hyperlink";
+import Image from "next/image";
 
 export interface SpeakerProps {
 	imageUrl: string;
@@ -103,8 +104,8 @@ const EventCard: React.FC<EventProps> = ({
 					<div className="flex flex-col">
 						<h4>{title}</h4>
 						<div className="flex flex-row gap-4">
-							{hosts.map((host) => {
-								return <span>{host}</span>;
+							{hosts.map((host, index) => {
+								return <span key={index.toString()}>{host}</span>;
 							})}
 							{hosts.length > 0 && <p className="font-bold">·</p>}
 							<p>{location}</p>
@@ -121,13 +122,15 @@ const EventCard: React.FC<EventProps> = ({
 					<p>{description}</p>
 					{oldResources && oldResources.length > 0 ? (
 						<div className="flex gap-4">
-							{oldResources.map((resouce) => {
+							{oldResources.map((resouce, index) => {
 								return (
-									<Hyperlink
-										text={resouce.text}
-										url={resouce.href}
-										classname="text-dark-grey"
-									/>
+									<div key={index.toString()}>
+										<Hyperlink
+											text={resouce.text}
+											url={resouce.href}
+											classname="text-dark-grey"
+										/>
+									</div>
 								);
 							})}
 						</div>
@@ -144,14 +147,16 @@ const EventCard: React.FC<EventProps> = ({
 					{agenda && agenda.length > 0 && (
 						<div className="flex-col flex gap-2">
 							<h4 className="border-b border-dark-grey pb-2">Agenda</h4>
-							{agenda.map((each) => {
+							{agenda.map((each, index) => {
 								return (
-									<EventDetail
-										timeFrame={each.timeFrame}
-										title={each.title}
-										description={each.description}
-										speakers={each.speakers}
-									/>
+									<div key={index.toString()}>
+										<EventDetail
+											timeFrame={each.timeFrame}
+											title={each.title}
+											description={each.description}
+											speakers={each.speakers}
+										/>
+									</div>
 								);
 							})}
 						</div>

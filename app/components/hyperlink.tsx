@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ArrowIcon from "./../../public/icons/arrow.svg";
-import ChevronIcon from "./../../public/icons/chevron.svg";
+import ArrowIcon from "@/assets/icons/arrow.svg";
+import ChevronIcon from "@/assets/icons/chevron.svg";
 
 export interface HyperlinkProps {
 	text: string;

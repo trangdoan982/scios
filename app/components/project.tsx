@@ -4,6 +4,7 @@ import Button from "./button";
 import ContributorsStack, { ContributorProps } from "./contributors";
 import Hyperlink, { isExternalLink } from "./hyperlink";
 import ProjectPopover from "./projectPopover";
+import Image from "next/image";
 
 export interface ProjectCardProps {
 	title: string;

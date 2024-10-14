@@ -1,4 +1,5 @@
-import PersonIcon from "./../../public/icons/Person.svg";
+import Image from "next/image";
+import PersonIcon from "@/assets/icons/person.svg";
 export interface ContributorProps {
 	name: string;
 	image?: string;
@@ -15,7 +16,7 @@ export const Contributor: React.FC<ContributorProps> = ({
 	return (
 		<a href={url} className="flex flex-row items-center gap-1">
 			{image ? (
-				<img src={image} className="w-8 h-8 rounded-full" />
+				<img alt={name} src={image} className="w-8 h-8 rounded-full" />
 			) : (
 				<PersonIcon className="w-8 h-8 bg-light-grey rounded-full" />
 			)}
@@ -43,7 +44,7 @@ const ContributorsStack: React.FC<ContributorsProps> = ({ contributors }) => {
 					}}
 				>
 					<img
-						src={contributor.image}
+						src={contributor.image ?? ""}
 						alt={contributor.name}
 						width={size}
 						height={size}
