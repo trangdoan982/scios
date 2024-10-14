@@ -1,4 +1,4 @@
-import PersonIcon from "@/public/icons/Person.svg";
+import PersonIcon from "./../../public/icons/Person.svg";
 export interface ContributorProps {
 	name: string;
 	image?: string;

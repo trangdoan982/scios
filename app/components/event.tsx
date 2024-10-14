@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import MinusIcon from "@/public/icons/minus.svg";
-import PlusIcon from "@/public/icons/plus.svg";
+import MinusIcon from "./../../public/icons/minus.svg";
+import PlusIcon from "./../../public/icons/plus.svg";
 import Button from "./button";
 import Hyperlink from "./hyperlink";
 

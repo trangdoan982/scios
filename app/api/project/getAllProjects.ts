@@ -1,6 +1,6 @@
 "use server";
 
-import { ContributorProps } from "@/app/components/contributors";
+import { ContributorProps } from "@/components/contributors";
 import { google } from "googleapis";
 
 export default async function getAllProjects() {

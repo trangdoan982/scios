@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ProjectCardProps } from "./project";
-import CloseIcon from "@/public/icons/close.svg";
+import CloseIcon from "./../../public/icons/close.svg";
 import Hyperlink from "./hyperlink";
 import { Contributor } from "./contributors";
 import Button from "./button";
