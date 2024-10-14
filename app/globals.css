@@ -76,3 +76,52 @@ html {
 		font-size: 18px;
 	}
 }
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-marquee {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: max-content;
+	animation: marquee 20s linear infinite;
+}
+.animate-marquee:hover {
+	animation-play-state: paused;
+}
+@keyframes blobsAnimation {
+	0%,
+	100% {
+		background-image: url("/background/blob1.png");
+	}
+	25% {
+		background-image: url("/background/blob2.png");
+	}
+	50% {
+		background-image: url("/background/blob3.png");
+	}
+	75% {
+		background-image: url("/background/blob4.png");
+	}
+}
+
+/* Create a container for the background blobs */
+.bg-blobs {
+	background-image: url("/background/blob1.png"), url("/background/blob2.png"),
+		url("/background/blob3.png"), url("/background/blob4.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	filter: blur(100px); /* Add blur effect */
+	animation: blobsAnimation 8s infinite ease-in-out;
+	opacity: 0.7;
+}
+
+/* Optional: Additional positioning, scaling, etc. for the blobs */

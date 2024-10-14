@@ -34,7 +34,6 @@ export default async function getAllProjects() {
 		}
 		if (value[5]) {
 			contributors = JSON.parse(value[5]);
-			console.log(contributors);
 		}
 
 		return {

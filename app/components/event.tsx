@@ -48,13 +48,15 @@ const EventDetail: React.FC<EventDetailProps> = ({
 				</div>
 			</div>
 			<div className="flex flex-col w-fit">
-				{speakers.map((speaker) => {
+				{speakers.map((speaker, index) => {
 					return (
-						<Speaker
-							name={speaker.name}
-							imageUrl={speaker.imageUrl}
-							affiliation={speaker.affiliation}
-						/>
+						<div id={index.toString()}>
+							<Speaker
+								name={speaker.name}
+								imageUrl={speaker.imageUrl}
+								affiliation={speaker.affiliation}
+							/>
+						</div>
 					);
 				})}
 			</div>
