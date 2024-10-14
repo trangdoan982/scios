@@ -24,7 +24,6 @@ const Product: React.FC<ProductProps> = ({
 	imageSrc,
 	reverse = false,
 }) => {
-	const iconPath = require(`../assets/icons/${icon}`);
 	return (
 		<div
 			className={`flex flex-col md:flex-row ${
