@@ -1,101 +1,213 @@
-import Image from "next/image";
+import Navigation from "./components/navigation";
+import Product from "./components/product";
+import Button from "./components/button";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import ProjectCard from "./components/project";
+import ProjectSection from "./components/projectSection";
+import Footer from "./components/footer";
+import EventSection from "./components/eventSection";
+import SupporterSection from "./components/supporterSection";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+	// const [bgColor, setBgColor] = useState("transparent");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	// const handleScroll = () => {
+	// 	const section = document.getElementById("product");
+	// 	if (section) {
+	// 		const { top, height } = section.getBoundingClientRect();
+	// 		const scrollY = window.scrollY;
+
+	// 		// Change this value to set how much scroll should influence the color
+	// 		const distanceFromTop = Math.max(100, height + top);
+	// 		console.log("test", height + top);
+
+	// 		// Calculate the percentage of how far you are in the section
+	// 		const percentage = Math.min(1, (scrollY - distanceFromTop) / height);
+
+	// 		// Define the start and end colors
+	// 		const startColor = "rgba(255, 255, 255, 0)"; // Start transparent
+	// 		const endColor = "rgba(58, 88, 55, 1)"; // End with a red background
+
+	// 		// Interpolate between the two colors
+	// 		const newColor = interpolateColor(startColor, endColor, percentage);
+	// 		console.log(newColor);
+	// 		setBgColor(newColor);
+	// 	}
+	// };
+
+	// const interpolateColor = (
+	// 	startColor: string,
+	// 	endColor: string,
+	// 	factor: number
+	// ) => {
+	// 	const start = hexToRgb(startColor);
+	// 	const end = hexToRgb(endColor);
+	// 	const result = start.map((startVal, index) =>
+	// 		Math.round(startVal + factor * (end[index] - startVal))
+	// 	);
+	// 	return `rgb(${result.join(",")})`;
+	// };
+
+	// const hexToRgb = (hex: string) => {
+	// 	const rgba = hex
+	// 		.replace(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*(\d+)?\)/, "$1,$2,$3")
+	// 		.split(",");
+	// 	return rgba.map(Number);
+	// };
+
+	// useEffect(() => {
+	// 	window.addEventListener("scroll", handleScroll);
+	// 	return () => {
+	// 		window.removeEventListener("scroll", handleScroll);
+	// 	};
+	// }, []);
+
+	return (
+		<div
+			className="flex flex-col w-full gap-14"
+			// style={{
+			// 	backgroundColor: bgColor,
+			// 	transition: "background-color 0.3s ease",
+			// }}
+		>
+			<div className="absolute sticky top-0 bg-white w-full px-6 md:px-16 z-16">
+				<Navigation />
+			</div>
+
+			{/* Intro */}
+			<section
+				className="w-full md:w-2/3 py-32 md:py-64 px-6 md:px-16"
+				id="about"
+			>
+				<h1>We facilitate infrastructure for open science</h1>
+				<h2 className="font-openSans font-medium text-[28px]">
+					We support collaborative, open source technological solutions to
+					streamline the research process and foster open science practices
+				</h2>
+			</section>
+
+			{/* Product section */}
+			<section
+				id="product"
+				className="bg-primary w-full flex flex-col gap-8 text-white justify-center pt-24 pb-36 px-6 md:px-16 "
+			>
+				<div className="flex flex-col p-4 md:px-36">
+					<h1 className="w-full text-center">What we do</h1>
+					<p className="w-full text-center">
+						SciOS is a collaborative organization dedicated to ensuring the
+						stable and sustainable operation of a scientific system and supply
+						chain that is open, efficient, and accessible. We believe that the
+						convergence of culture and technology is critical to achieve this
+						vision. SciOS maintains a collaborative environment for academics,
+						researchers, technologists, innovators, funders, policy makers,
+						institutions, corporations, and the public. We achieve this by
+					</p>
+				</div>
+
+				<Product
+					title={"Connect"}
+					icon={"connect.svg"}
+					text={
+						"Network of researchers and technologists who want to and can create technology for the Open Science community."
+					}
+					imageSrc={"connect.png"}
+					ctaText="Join our network"
+				/>
+				<Product
+					title="Build"
+					icon="build.svg"
+					text="Our workshops lead to clear outputs. Every workshop, working group, and hackathon is grounded in the results the community needs instead of declarations on what we already know we should do."
+					imageSrc="build.png"
+					hyperlink="#projects"
+					hyperlinkText="See supporting projects"
+					reverse={true}
+				/>
+				<Product
+					title="Share"
+					icon="share.svg"
+					text="All technology we facilitate is open source. Our workshop outputs are synthesized into resources accessible and understandable by everyone. We then shared directly to ensure that the most engaged and impacted individuals know."
+					imageSrc="share.png"
+					// TODO: add link to open pop up for subscribe to newsletter
+					hyperlink="placeholder"
+					hyperlinkText="Subscribe to our newsletter"
+				/>
+			</section>
+
+			<section id="projects" className="pt-24 px-6 md:px-16">
+				<ProjectSection />
+			</section>
+			<section id="events" className="pt-24 px-6 md:px-16">
+				<EventSection
+				// events={[
+				// 	{
+				// 		title: "test new event",
+				// 		date: "7.11.2",
+				// 		hosts: ["SciOS", "Metagov"],
+				// 		location: "Vermon, VT",
+				// 		description: "This is an amazing event",
+				// 		agenda: [
+				// 			{
+				// 				timeFrame: "test",
+				// 				title: "test",
+				// 				description: "test",
+				// 				speakers: [
+				// 					{
+				// 						name: "test",
+				// 						imageUrl: "test",
+				// 						affiliation: "test",
+				// 					},
+				// 				],
+				// 			},
+				// 			{
+				// 				timeFrame: "test",
+				// 				title: "test",
+				// 				description: "test",
+				// 				speakers: [
+				// 					{
+				// 						name: "test",
+				// 						imageUrl: "test",
+				// 						affiliation: "test",
+				// 					},
+				// 				],
+				// 			},
+				// 		],
+				// 	},
+				// 	{
+				// 		title: "test old event",
+				// 		date: "test",
+				// 		hosts: [],
+				// 		location: "test",
+				// 		description: "This is an amazing event",
+				// 		isOld: true,
+				// 		oldResources: [
+				// 			{
+				// 				href: "test",
+				// 				text: "test",
+				// 			},
+				// 		],
+				// 	},
+				// 	{
+				// 		title: "test old event",
+				// 		date: "test",
+				// 		hosts: [],
+				// 		location: "test",
+				// 		description: "This is an amazing event",
+				// 		isOld: true,
+				// 		oldResources: [
+				// 			{
+				// 				href: "test",
+				// 				text: "test",
+				// 			},
+				// 		],
+				// 	},
+				// ]}
+				/>
+			</section>
+			<section className="pt-24 px-6 md:px-16">
+				<SupporterSection />
+			</section>
+			<Footer />
+		</div>
+	);
 }
