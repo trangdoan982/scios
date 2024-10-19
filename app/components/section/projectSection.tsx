@@ -1,11 +1,8 @@
-// "use client";
-
-import getAllProjects from "../api/project/getAllProjects";
-import ProjectCard from "./project";
+import getAllProjects from "../../api/project/getAllProjects";
+import ProjectCard from "../project";
 
 export default async function ProjectSection() {
 	const projects = await getAllProjects();
-	console.log(projects![0]);
 	return (
 		<div className="flex flex-col gap-28">
 			<h1 className="w-full text-center">Projects we support</h1>

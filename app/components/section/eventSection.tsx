@@ -1,5 +1,5 @@
-import EventCard, { EventProps } from "./event";
-import getAllEvents from "../api/events/getAllEvents";
+import getAllEvents from "@/api/events/getAllEvents";
+import EventCard from "../event";
 
 const EventSection = async () => {
 	const events = await getAllEvents();

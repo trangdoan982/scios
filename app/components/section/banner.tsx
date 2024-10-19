@@ -1,4 +1,4 @@
-import { getLogos } from "../lib/getLogos";
+import { getLogos } from "@/lib/getLogos";
 import Image from "next/image";
 
 const Banner = () => {
