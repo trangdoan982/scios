@@ -35,38 +35,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	const [openPopover, setOpenPopover] = useState(false);
 	return (
 		<>
-			<div className="bg-snow shadow-lg flex flex-col gap-4 py-4 px-6 hover:shadow-3xl hover:bg-accent-2">
+			<div className="bg-snow h-[700px] overflow-hidden shadow-lg flex flex-col gap-4 py-4 px-6 hover:shadow-3xl hover:bg-accent-2">
 				<h3>{title}</h3>
-				<div className="flex gap-1 md:gap-4 flex-col md:flex-row">
-					{hyperlinks.map((hyperlink) => {
-						return (
-							<Hyperlink
-								text={hyperlink.text}
-								url={hyperlink.href}
-								classname="text-dark-grey"
-							/>
-						);
-					})}
-				</div>
-				<img src={image} alt={title} className="rounded-lg h-80 object-cover" />
-				<div className="flex flex-col gap-2 md:flex-row md:justify-between">
-					<Button
-						text={ctaText}
-						onClick={() => {
-							window.open(
-								ctaLink,
-								isExternalLink(ctaLink) ? "_blank" : "_self"
-							);
-						}}
-						color="primary"
-					/>
-					<div className="flex flex-row items-center gap-2">
-						<p className="text-sm text-dark-grey">Contributors</p>
-						<div className="flex w-28">
-							<ContributorsStack contributors={contributors} />
-						</div>
-					</div>
-				</div>
+				<img
+					src={image}
+					alt={title}
+					onClick={() => {
+						setOpenPopover(true);
+					}}
+					className="rounded-lg h-80 object-cover"
+				/>
 				<p
 					className="pt-12"
 					onClick={() => {

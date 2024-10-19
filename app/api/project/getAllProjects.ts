@@ -19,7 +19,7 @@ export default async function getAllProjects() {
 		scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
 	});
 	const sheets = google.sheets({ version: "v4", auth });
-	const range = "Projects!A2:J";
+	const range = "Projects!A2:L";
 	const data = await sheets.spreadsheets.values.get({
 		spreadsheetId: process.env.GOOGLE_SHEET_ID,
 		range: range,
@@ -45,8 +45,8 @@ export default async function getAllProjects() {
 			contributors,
 			description: value[6],
 			status: value[7],
-			previousWorkshops: value[8],
-			upcomingWorkshops: value[9],
+			previousWorkshops: value[10],
+			upcomingWorkshops: value[11],
 		};
 	});
 }

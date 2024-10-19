@@ -18,7 +18,12 @@ const SupporterSection = () => {
 			<div className="flex flex-col items-center">
 				<Button
 					text="Support what matters"
-					onClick={() => {}}
+					onClick={() => {
+						window.open(
+							"https://www.papermark.io/view/cm29av6dy0008acuhayqq4oya",
+							"_blank"
+						);
+					}}
 					color="primary"
 				/>
 			</div>

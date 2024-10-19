@@ -16,15 +16,15 @@ export default function Home() {
 			<div className="absolute sticky top-0 bg-white w-full px-6 md:px-16 z-50">
 				<Navigation />
 			</div>
-			<div className="flex flex-col w-full gap-14">
+			<div className="flex flex-col w-full  gap-14">
 				{/* Intro */}
-				<div className="flex flex-col w-full relative">
+				<div className="flex flex-col w-full relative h-full">
 					{/* Blob background */}
 					<BlobBackground />
 
 					{/* Intro Section */}
 					<section
-						className="relative w-full md:w-2/3 py-32 md:pt-64 md:pb-48 px-6 md:px-16 z-10"
+						className="relative w-full h-full md:w-2/3 py-32 md:pt-64 md:pb-48 px-6 md:px-16 z-10"
 						id="about"
 					>
 						<h1>We facilitate infrastructure for open science</h1>

@@ -3,7 +3,7 @@ import { Dialog, DialogPanel } from "@headlessui/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ProjectCardProps } from "./project";
 import CloseIcon from "@/assets/icons/close.svg";
-import Hyperlink from "./hyperlink";
+import Hyperlink, { isExternalLink } from "./hyperlink";
 import { Contributor } from "./contributors";
 import Button from "./button";
 import Image from "next/image";
@@ -44,7 +44,7 @@ const ProjectPopover: React.FC<ProjectPopoverProps> = ({
 							<div className="flex flex-row justify-between items-center">
 								<h4>{title}</h4>
 								<Button
-									text={status.toString()}
+									text={status.toString() ?? "Active"}
 									color={
 										status === "Active"
 											? "secondary"
@@ -62,20 +62,14 @@ const ProjectPopover: React.FC<ProjectPopoverProps> = ({
 							/>
 							<div className="flex flex-col-reverse gap-4 md:flex-row md:justify-between md:items-center">
 								<div className="flex flex-col gap-3">
-									{hyperlinks.map((hyperlink, index) => {
-										return (
-											<div key={index.toString()}>
-												<Hyperlink
-													text={hyperlink.text}
-													url={hyperlink.href}
-													classname="text-dark-grey"
-												/>
-											</div>
-										);
-									})}
 									<Button
 										text={ctaText}
-										onClick={() => window.open(ctaLink, "_blank")}
+										onClick={() => {
+											window.open(
+												ctaLink,
+												isExternalLink(ctaLink) ? "_blank" : "_self"
+											);
+										}}
 										color="primary"
 									/>
 								</div>
@@ -97,16 +91,34 @@ const ProjectPopover: React.FC<ProjectPopoverProps> = ({
 								</div>
 							</div>
 							<div className="w-full">{description}</div>
+							<div className="flex flex-col gap-1">
+								<p className="font-bold">Resources:</p>
+								{hyperlinks.map((hyperlink, index) => {
+									return (
+										<div key={index.toString()}>
+											<Hyperlink
+												text={hyperlink.text}
+												url={hyperlink.href}
+												classname="text-dark-grey"
+											/>
+										</div>
+									);
+								})}
+							</div>
 							{previousWorkshops && (
 								<div className="flex flex-col gap-2">
 									<p className="font-bold">Previous workshops:</p>
-									<p>{previousWorkshops}</p>
+									<p
+										dangerouslySetInnerHTML={{ __html: previousWorkshops }}
+									></p>
 								</div>
 							)}
 							{upcomingWorkshops && (
 								<div className="flex flex-col gap-2">
 									<p className="font-bold">Upcoming workshops:</p>
-									<p>{upcomingWorkshops}</p>
+									<p
+										dangerouslySetInnerHTML={{ __html: upcomingWorkshops }}
+									></p>
 								</div>
 							)}
 						</div>

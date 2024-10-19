@@ -76,6 +76,9 @@ html {
 		font-size: 18px;
 	}
 }
+.workshop {
+	color: blue;
+}
 
 @keyframes marquee {
 	0% {

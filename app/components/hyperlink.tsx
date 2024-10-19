@@ -49,7 +49,7 @@ const Hyperlink: React.FC<HyperlinkProps> = ({
 			</span>
 
 			{hovered ? (
-				<ArrowIcon classname={classname} />
+				<ArrowIcon classname={`w-2 h-2 text-white ${classname}`} />
 			) : (
 				<ChevronIcon classname={`w-2 h-2 text-white ${classname}`} />
 			)}
