@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 interface ProductProps {
 	title: string;
-	icon: string;
+	Icon: ReactNode;
 	text: string;
 	ctaText?: string;
 	hyperlinkText?: string;
@@ -16,7 +16,7 @@ interface ProductProps {
 }
 const Product: React.FC<ProductProps> = ({
 	title,
-	icon,
+	Icon,
 	text,
 	ctaText,
 	hyperlinkText,
@@ -31,8 +31,8 @@ const Product: React.FC<ProductProps> = ({
 			} items-center gap-4 md:gap-20 p-4 `}
 		>
 			<div className="w-full md:w-1/2 space-y-4">
+				{Icon}
 				<div className="flex items-center gap-2">
-					<img src={icon} alt={""} height={24} width={24} />
 					<h2 className="text-2xl font-bold ">{title}</h2>
 				</div>
 				<p className="">{text}</p>
@@ -52,7 +52,7 @@ const Product: React.FC<ProductProps> = ({
 					<Hyperlink
 						text={hyperlinkText}
 						url={hyperlink}
-						classname="text-white"
+						className="text-white"
 						underline={true}
 					/>
 				)}

@@ -59,7 +59,7 @@ export default function Home() {
 
 					<Product
 						title={"Connect"}
-						icon={"connect.svg"}
+						Icon={<ConnectIcon width={30} height={30} />}
 						text={
 							"Network of researchers and technologists who want to and can create technology for the Open Science community."
 						}
@@ -68,7 +68,7 @@ export default function Home() {
 					/>
 					<Product
 						title="Build"
-						icon="build.svg"
+						Icon={<BuildIcon width={30} height={30} />}
 						text="Our workshops lead to clear outputs. Every workshop, working group, and hackathon is grounded in the results the community needs instead of declarations on what we already know we should do."
 						imageSrc="build.png"
 						hyperlink="#projects"
@@ -77,7 +77,7 @@ export default function Home() {
 					/>
 					<Product
 						title="Share"
-						icon="share.svg"
+						Icon={<ShareIcon width={30} height={30} />}
 						text="All technology we facilitate is open source. Our workshop outputs are synthesized into resources accessible and understandable by everyone. We then shared directly to ensure that the most engaged and impacted individuals know."
 						imageSrc="share.png"
 						// TODO: add link to open pop up for subscribe to newsletter

@@ -128,7 +128,7 @@ const EventCard: React.FC<EventProps> = ({
 										<Hyperlink
 											text={resouce.text}
 											url={resouce.href}
-											classname="text-dark-grey"
+											className="text-dark-grey"
 										/>
 									</div>
 								);

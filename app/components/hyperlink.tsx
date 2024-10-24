@@ -5,7 +5,7 @@ import ChevronIcon from "@/assets/icons/chevron.svg";
 export interface HyperlinkProps {
 	text: string;
 	url: string;
-	classname?: string;
+	className?: string;
 	underline?: boolean;
 }
 
@@ -21,7 +21,7 @@ export const isExternalLink = (link: string) => {
 const Hyperlink: React.FC<HyperlinkProps> = ({
 	text,
 	url,
-	classname,
+	className,
 	underline = false,
 }) => {
 	const [hovered, setHovered] = useState(false);
@@ -36,23 +36,28 @@ const Hyperlink: React.FC<HyperlinkProps> = ({
 		<a
 			href={url}
 			target={isExternalLink(url) ? "_blank" : "_self"}
-			className={`flex flex-row ${classname} font-openSans items-center gap-1`}
+			className={`flex flex-row ${className} font-openSans items-center gap-1`}
 			onMouseEnter={onHover}
 			onMouseLeave={onUnhover}
 		>
 			<span
 				className={`${
 					underline ? "underline underline-offset-8" : ""
-				} text-sm font-bold ${classname}`}
+				} text-sm font-bold ${className}`}
 			>
 				{text}
 			</span>
-
-			{hovered ? (
-				<ArrowIcon classname={`w-2 h-2 text-white ${classname}`} />
-			) : (
-				<ChevronIcon classname={`w-2 h-2 text-white ${classname}`} />
-			)}
+			<span className="pt-1">
+				{hovered ? (
+					<ArrowIcon
+						width={12}
+						height={12}
+						// classname={` text-white ${classname}`}
+					/>
+				) : (
+					<ChevronIcon width={12} height={12} />
+				)}
+			</span>
 		</a>
 	);
 };

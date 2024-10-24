@@ -99,7 +99,7 @@ const ProjectPopover: React.FC<ProjectPopoverProps> = ({
 											<Hyperlink
 												text={hyperlink.text}
 												url={hyperlink.href}
-												classname="text-dark-grey"
+												className="text-dark-grey"
 											/>
 										</div>
 									);
