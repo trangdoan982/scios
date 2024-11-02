@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PersonIcon from "@/assets/icons/person.svg";
+import PersonIcon from "./../../public/icons/person.svg";
 export interface ContributorProps {
 	name: string;
 	image?: string;

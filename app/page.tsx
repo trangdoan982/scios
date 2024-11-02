@@ -16,27 +16,26 @@ export default function Home() {
 			<div className="absolute sticky top-0 bg-white w-full px-6 md:px-16 z-50">
 				<Navigation />
 			</div>
-			<div className="flex flex-col w-full  gap-14">
+			<div className="flex flex-col w-full">
 				{/* Intro */}
 				<div className="flex flex-col w-full relative h-full">
 					{/* Blob background */}
 					<BlobBackground />
 
 					{/* Intro Section */}
-					<section
-						className="relative w-full h-full md:w-2/3 py-32 md:pt-64 md:pb-48 px-6 md:px-16 z-10"
-						id="about"
-					>
-						<h1>We facilitate infrastructure for open science</h1>
-						<h2 className="font-openSans font-medium text-[28px]">
-							We support collaborative, open source technological solutions to
-							streamline the research process and foster open science practices
-						</h2>
+					<section className="relative w-full h-[100vh]  z-10" id="about">
+						<div className="w-full md:w-2/3 py-32 md:pt-80 md:pb-48 px-6 md:px-16">
+							<h1>We facilitate infrastructure for open science</h1>
+							<h2 className="font-openSans font-medium text-[28px]">
+								We support collaborative, open source technological solutions to
+								streamline the research process and foster open science
+								practices
+							</h2>
+						</div>
+						<div>
+							<Banner />
+						</div>
 					</section>
-				</div>
-
-				<div>
-					<Banner />
 				</div>
 
 				{/* Product section */}
@@ -59,7 +58,7 @@ export default function Home() {
 
 					<Product
 						title={"Connect"}
-						Icon={<ConnectIcon width={30} height={30} />}
+						icon="connect.svg"
 						text={
 							"Network of researchers and technologists who want to and can create technology for the Open Science community."
 						}
@@ -68,7 +67,7 @@ export default function Home() {
 					/>
 					<Product
 						title="Build"
-						Icon={<BuildIcon width={30} height={30} />}
+						icon="build.svg"
 						text="Our workshops lead to clear outputs. Every workshop, working group, and hackathon is grounded in the results the community needs instead of declarations on what we already know we should do."
 						imageSrc="build.png"
 						hyperlink="#projects"
@@ -77,7 +76,7 @@ export default function Home() {
 					/>
 					<Product
 						title="Share"
-						Icon={<ShareIcon width={30} height={30} />}
+						icon="share.svg"
 						text="All technology we facilitate is open source. Our workshop outputs are synthesized into resources accessible and understandable by everyone. We then shared directly to ensure that the most engaged and impacted individuals know."
 						imageSrc="share.png"
 						// TODO: add link to open pop up for subscribe to newsletter

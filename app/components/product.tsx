@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 interface ProductProps {
 	title: string;
-	Icon: ReactNode;
+	icon: string;
 	text: string;
 	ctaText?: string;
 	hyperlinkText?: string;
@@ -16,7 +16,7 @@ interface ProductProps {
 }
 const Product: React.FC<ProductProps> = ({
 	title,
-	Icon,
+	icon,
 	text,
 	ctaText,
 	hyperlinkText,
@@ -31,7 +31,7 @@ const Product: React.FC<ProductProps> = ({
 			} items-center gap-4 md:gap-20 p-4 `}
 		>
 			<div className="w-full md:w-1/2 space-y-4">
-				{Icon}
+				<img src={`/icons/${icon}`} />
 				<div className="flex items-center gap-2">
 					<h2 className="text-2xl font-bold ">{title}</h2>
 				</div>
