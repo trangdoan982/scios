@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import ProjectCard from "../project";
+import { HyperlinkProps } from "../hyperlink";
+import { ContributorProps } from "../contributors";
 
 type Project = {
 	title: string;
-	hyperlinks: any[];
+	hyperlinks: Array<{ href: string; text: string }>;
 	image: string;
 	ctaText: string;
 	ctaLink: string;
-	contributors: any[];
+	contributors: ContributorProps[];
 	description: string;
 	status: string;
 	previousWorkshops: string;
