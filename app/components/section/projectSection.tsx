@@ -84,7 +84,7 @@ export default function ProjectSection() {
 							ctaText={project.ctaText}
 							contributors={project.contributors}
 							description={project.description}
-							// @ts-ignore
+							// @ts-expect-error
 							status={project.status}
 							previousWorkshops={project.previousWorkshops}
 							upcomingWorkshops={project.upcomingWorkshops}
