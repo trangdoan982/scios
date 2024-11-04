@@ -84,7 +84,7 @@ export default function ProjectSection() {
 							ctaText={project.ctaText}
 							contributors={project.contributors}
 							description={project.description}
-							// @ts-expect-error
+							// @ts-expect-error: status is not typed
 							status={project.status}
 							previousWorkshops={project.previousWorkshops}
 							upcomingWorkshops={project.upcomingWorkshops}
