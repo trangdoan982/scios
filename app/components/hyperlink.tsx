@@ -7,6 +7,7 @@ export interface HyperlinkProps {
 	url: string;
 	className?: string;
 	underline?: boolean;
+	onClick?: () => void;
 }
 
 export const isExternalLink = (link: string) => {
@@ -23,6 +24,7 @@ const Hyperlink: React.FC<HyperlinkProps> = ({
 	url,
 	className,
 	underline = false,
+	onClick,
 }) => {
 	const [hovered, setHovered] = useState(false);
 
@@ -39,6 +41,12 @@ const Hyperlink: React.FC<HyperlinkProps> = ({
 			className={`flex flex-row ${className} font-openSans items-center gap-1`}
 			onMouseEnter={onHover}
 			onMouseLeave={onUnhover}
+			onClick={(e) => {
+				if (onClick) {
+					e.preventDefault();
+					onClick();
+				}
+			}}
 		>
 			<span
 				className={`${
@@ -49,13 +57,9 @@ const Hyperlink: React.FC<HyperlinkProps> = ({
 			</span>
 			<span className="pt-1">
 				{hovered ? (
-					<ArrowIcon
-						width={12}
-						height={12}
-						// classname={` text-white ${classname}`}
-					/>
+					<ArrowIcon width={12} height={12} />
 				) : (
-					<ChevronIcon width={12} height={12} />
+					<ChevronIcon width={10} height={10} />
 				)}
 			</span>
 		</a>

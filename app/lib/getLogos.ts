@@ -1,19 +1,3 @@
-// lib/getLogos.ts
-import fs from "fs";
-import path from "path";
-
-export const getLogos = () => {
-	const bannerDir = path.join(process.cwd(), "public/banner");
-	const files = fs.readdirSync(bannerDir);
-
-	// Only return files with valid image extensions
-	const logoFiles = files.filter((file) =>
-		/\.(png|jpg|jpeg|svg|webp)$/.test(file)
-	);
-
-	return logoFiles;
-};
-
 export const nameMapping: { [key: string]: string } = {
 	"Ankara 1.png": "https://www.ankara.edu.tr/",
 	"boston univeristy.png": "https://www.bu.edu/",

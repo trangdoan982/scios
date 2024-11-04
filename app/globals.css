@@ -128,3 +128,23 @@ html {
 }
 
 /* Optional: Additional positioning, scaling, etc. for the blobs */
+
+/* Add this to your global CSS file, like styles/globals.css */
+.underline-animation {
+	position: relative;
+}
+
+.underline-animation::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: currentColor;
+	transition: width 0.3s ease; /* Adjust duration and easing as needed */
+}
+
+.underline-animation:hover::after {
+	width: 100%;
+}

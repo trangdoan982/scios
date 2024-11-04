@@ -13,6 +13,7 @@ interface ProductProps {
 	hyperlink?: string;
 	imageSrc: string;
 	reverse?: boolean;
+	onClick?: () => void;
 }
 const Product: React.FC<ProductProps> = ({
 	title,
@@ -23,6 +24,7 @@ const Product: React.FC<ProductProps> = ({
 	hyperlink,
 	imageSrc,
 	reverse = false,
+	onClick,
 }) => {
 	return (
 		<div
@@ -31,7 +33,7 @@ const Product: React.FC<ProductProps> = ({
 			} items-center gap-4 md:gap-20 p-4 `}
 		>
 			<div className="w-full md:w-1/2 space-y-4">
-				<img src={`/icons/${icon}`} />
+				<img src={`/icons/${icon}`} className="w-8 h-8" />
 				<div className="flex items-center gap-2">
 					<h2 className="text-2xl font-bold ">{title}</h2>
 				</div>
@@ -54,6 +56,7 @@ const Product: React.FC<ProductProps> = ({
 						url={hyperlink}
 						className="text-white"
 						underline={true}
+						onClick={onClick}
 					/>
 				)}
 			</div>

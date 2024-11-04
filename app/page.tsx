@@ -1,3 +1,5 @@
+"use client";
+
 import Navigation from "./components/section/navigation";
 import Product from "./components/product";
 import ProjectSection from "./components/section/projectSection";
@@ -6,42 +8,46 @@ import EventSection from "./components/section/eventSection";
 import SupporterSection from "./components/section/supporterSection";
 import Banner from "./components/section/banner";
 import BlobBackground from "./components/background";
-import ConnectIcon from "@/assets/icons/connect.svg";
-import BuildIcon from "@/assets/icons/build.svg";
-import ShareIcon from "@/assets/icons/share.svg";
+import { Dialog } from "@headlessui/react";
+import { useState } from "react";
+import NewsletterSubscription from "./components/newsletterSubscription";
 
 export default function Home() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<>
-			<div className="absolute sticky top-0 bg-white w-full px-6 md:px-16 z-50">
+			<div className="absolute sticky top-0 bg-white w-full px-6 md:px-16 z-50 h-[80px]">
 				<Navigation />
 			</div>
 			<div className="flex flex-col w-full">
-				{/* Intro */}
-				<div className="flex flex-col w-full relative h-full">
+				{/* Hero Section */}
+				<div className="relative min-h-[calc(100vh-80px)] flex flex-col">
 					{/* Blob background */}
 					<BlobBackground />
 
-					{/* Intro Section */}
-					<section className="relative w-full h-[100vh]  z-10" id="about">
-						<div className="w-full md:w-2/3 py-32 md:pt-80 md:pb-48 px-6 md:px-16">
-							<h1>We facilitate infrastructure for open science</h1>
+					{/* Hero Content */}
+					<div className="flex-grow flex items-center z-10">
+						<div className="w-full md:w-2/3 px-6 md:px-16">
+							<h1>We create infrastructure</h1>
 							<h2 className="font-openSans font-medium text-[28px]">
 								We support collaborative, open source technological solutions to
 								streamline the research process and foster open science
 								practices
 							</h2>
 						</div>
-						<div>
-							<Banner />
-						</div>
-					</section>
+					</div>
+
+					{/* Banner - now will stick to bottom */}
+					<div className="w-full z-10">
+						<Banner />
+					</div>
 				</div>
 
 				{/* Product section */}
 				<section
 					id="product"
-					className="bg-primary w-full flex flex-col gap-8 text-white justify-center pt-24 pb-36 px-6 md:px-16 "
+					className="bg-primary w-full flex flex-col gap-8 text-white justify-center pt-36 pb-36 px-6 md:px-16 "
 				>
 					<div className="flex flex-col p-4 md:px-36">
 						<h1 className="w-full text-center">What we do</h1>
@@ -71,7 +77,7 @@ export default function Home() {
 						text="Our workshops lead to clear outputs. Every workshop, working group, and hackathon is grounded in the results the community needs instead of declarations on what we already know we should do."
 						imageSrc="build.png"
 						hyperlink="#projects"
-						hyperlinkText="See supporting projects"
+						hyperlinkText="See supported projects"
 						reverse={true}
 					/>
 					<Product
@@ -79,9 +85,9 @@ export default function Home() {
 						icon="share.svg"
 						text="All technology we facilitate is open source. Our workshop outputs are synthesized into resources accessible and understandable by everyone. We then shared directly to ensure that the most engaged and impacted individuals know."
 						imageSrc="share.png"
-						// TODO: add link to open pop up for subscribe to newsletter
-						hyperlink="placeholder"
+						hyperlink="#"
 						hyperlinkText="Subscribe to our newsletter"
+						onClick={() => setIsOpen(true)}
 					/>
 				</section>
 
@@ -94,8 +100,36 @@ export default function Home() {
 				<section className="pt-24 px-6 md:px-16">
 					<SupporterSection />
 				</section>
-				<Footer />
+				<section className="pt-32">
+					<Footer />
+				</section>
 			</div>
+
+			<Dialog
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				className="relative z-50"
+			>
+				{/* The backdrop, rendered as a fixed sibling to the panel container */}
+				<div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+				{/* Full-screen container to center the panel */}
+				<div className="fixed inset-0 flex items-center justify-center p-4">
+					<Dialog.Panel className="mx-auto max-w-lg rounded bg-white p-6">
+						<div className="flex flex-col">
+							<div className="flex justify-end">
+								<button
+									onClick={() => setIsOpen(false)}
+									className="text-gray-500 hover:text-gray-700"
+								>
+									x
+								</button>
+							</div>
+							<NewsletterSubscription />
+						</div>
+					</Dialog.Panel>
+				</div>
+			</Dialog>
 		</>
 	);
 }

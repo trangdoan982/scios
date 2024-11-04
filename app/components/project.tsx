@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "./button";
 import ContributorsStack, { ContributorProps } from "./contributors";
 import Hyperlink, { isExternalLink } from "./hyperlink";
@@ -33,29 +33,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
 	const maxDescriptionLength = 310;
 	const [openPopover, setOpenPopover] = useState(false);
+
 	return (
 		<>
-			<div className="bg-snow h-[700px] overflow-hidden shadow-lg flex flex-col gap-4 py-4 px-6 hover:shadow-3xl hover:bg-accent-2">
-				<h3>{title}</h3>
-				<img
-					src={image}
-					alt={title}
-					onClick={() => {
-						setOpenPopover(true);
-					}}
-					className="rounded-lg h-80 object-cover"
-				/>
-				<p
-					className="pt-12"
-					onClick={() => {
-						setOpenPopover(true);
-					}}
-				>
-					{description.slice(0, maxDescriptionLength)}
-					{description.length > maxDescriptionLength && (
-						<span className="text-dark-grey">...Read more</span>
-					)}
-				</p>
+			<div
+				className="bg-snow h-[710px] shadow-2xl flex flex-col gap-4 py-4 px-6 hover:shadow-3xl hover:bg-accent-2 transition-transform duration-100 hover:-translate-x-1 hover:-translate-y-1"
+				onClick={() => {
+					setOpenPopover(true);
+				}}
+			>
+				<h3 className="md:min-h-[3lh] min-h-[5lh] line-clamp-5 md:line-clamp-3 flex items-center">
+					{title}
+				</h3>
+				<img src={image} alt={title} className="rounded-lg h-80 object-cover" />
+				<p className={`pt-6 line-clamp-4 md:line-clamp-6`}>{description}</p>
 			</div>
 			<ProjectPopover
 				isOpen={openPopover}

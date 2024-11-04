@@ -48,7 +48,7 @@ const EventDetail: React.FC<EventDetailProps> = ({
 					<p className="text-sm">{description}</p>
 				</div>
 			</div>
-			<div className="flex flex-col w-fit">
+			<div className="flex flex-col w-fit invisible md:visible">
 				{speakers.map((speaker, index) => {
 					return (
 						<div id={index.toString()}>
@@ -74,7 +74,7 @@ export interface EventProps {
 	description: string;
 	oldResources?: Array<{ href: string; text: string }>;
 	agenda?: EventDetailProps[];
-	isOld?: boolean;
+	isOld?: boolean | string;
 }
 
 const EventCard: React.FC<EventProps> = ({
@@ -92,8 +92,8 @@ const EventCard: React.FC<EventProps> = ({
 	return (
 		<div
 			className={`w-full ${
-				expanded ? "bg-light-grey" : "bg-platinum"
-			} hover:bg-light-grey flex flex-col px-7 py-4 rounded-lg gap-7`}
+				expanded ? "bg-accent-2" : "bg-[#f7dfcd]"
+			} hover:bg-accent-2 flex flex-col px-7 py-4 rounded-lg gap-7`}
 		>
 			<div
 				className="flex justify-between"

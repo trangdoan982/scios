@@ -1,11 +1,10 @@
-import { getLogos, nameMapping } from "@/lib/getLogos";
-import Image from "next/image";
+import { nameMapping } from "@/lib/getLogos";
 
 const Banner = () => {
-	const logos = getLogos();
+	const logos = Object.keys(nameMapping);
 
 	return (
-		<div className="flex flex-col bg-white">
+		<div className="flex flex-col bg-white pt-6">
 			<h4 className="w-full text-center">
 				Connecting academics and technicians from
 			</h4>
