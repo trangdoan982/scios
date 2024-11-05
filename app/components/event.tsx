@@ -5,6 +5,7 @@ import PlusIcon from "./../../public/icons/plus.svg";
 import Button from "./button";
 import Hyperlink from "./hyperlink";
 import Image from "next/image";
+import PersonIcon from "./../../public/icons/person.svg";
 
 export interface SpeakerProps {
 	imageUrl: string;
@@ -17,8 +18,12 @@ const Speaker: React.FC<SpeakerProps> = ({
 	affiliation = "",
 }) => {
 	return (
-		<div className="flex gap-1.5">
-			<img src={imageUrl} alt={name} className="rounded-full h-12 w-12" />
+		<div className="flex gap-2">
+			{imageUrl ? (
+				<img src={imageUrl} alt={name} className="rounded-full h-10 w-10" />
+			) : (
+				<PersonIcon className="w-10 h-10 bg-light-grey rounded-full p-2" />
+			)}
 			<div className="flex flex-col ">
 				<p>{name}</p>
 				<p className="text-sm text-dark-grey">{affiliation}</p>
@@ -41,14 +46,14 @@ const EventDetail: React.FC<EventDetailProps> = ({
 }) => {
 	return (
 		<div className="flex flex-col gap-4 md:flex-row md:gap-20 md:justify-between">
-			<div className="flex gap-8">
-				<p>{timeFrame}</p>
-				<div className="flex flex-col">
+			<div className="flex gap-8 md:w-2/3">
+				<p className="w-24">{timeFrame}</p>
+				<div className="flex flex-col flex-1">
 					<p className="font-bold">{title}</p>
 					<p className="text-sm">{description}</p>
 				</div>
 			</div>
-			<div className="flex flex-col w-fit invisible md:visible">
+			<div className="flex flex-col w-full gap-2 md:w-1/3 invisible md:visible">
 				{speakers.map((speaker, index) => {
 					return (
 						<div id={index.toString()}>
@@ -100,7 +105,7 @@ const EventCard: React.FC<EventProps> = ({
 				onClick={() => setExpanded(!expanded)}
 			>
 				<div className="flex flex-col gap-2 md:flex-row md:gap-12">
-					<div className="font-bold">{date}</div>
+					<div className="font-bold w-36">{date}</div>
 					<div className="flex flex-col">
 						<h4>{title}</h4>
 						<div className="flex flex-row gap-4">
@@ -145,7 +150,7 @@ const EventCard: React.FC<EventProps> = ({
 					)}
 
 					{agenda && agenda.length > 0 && (
-						<div className="flex-col flex gap-2">
+						<div className="flex-col flex gap-6">
 							<h4 className="border-b border-dark-grey pb-2">Agenda</h4>
 							{agenda.map((each, index) => {
 								return (

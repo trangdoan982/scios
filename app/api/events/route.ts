@@ -35,12 +35,12 @@ export async function GET() {
 				oldResources = JSON.parse(value[6]);
 			}
 			return {
-				title: value[0],
-				date: value[1],
-				hosts: value[2].split(","),
-				location: value[3],
-				eventLink: value[4],
-				description: value[5],
+				title: value[0] ?? "",
+				date: value[1] ?? "",
+				hosts: value[2].split(",") ?? [],
+				location: value[3] ?? "",
+				eventLink: value[4] ?? "",
+				description: value[5] ?? "",
 				oldResources,
 				agenda,
 				isOld: value[8],

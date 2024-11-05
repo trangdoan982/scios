@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 					setOpenPopover(true);
 				}}
 			>
-				<h3 className="md:min-h-[3lh] min-h-[5lh] line-clamp-5 md:line-clamp-3 flex items-center">
+				<h3 className="md:min-h-[3lh] min-h-[5lh] line-clamp-5 md:line-clamp-3 flex items-center md:items-center md:flex">
 					{title}
 				</h3>
 				<img src={image} alt={title} className="rounded-lg h-80 object-cover" />
